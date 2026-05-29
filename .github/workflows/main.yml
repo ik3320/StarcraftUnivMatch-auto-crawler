@@ -2,18 +2,16 @@ name: Run Python Crawler Automatically
 
 on:
   schedule:
-    # -------------------------------------------------------------------------
-    # [핵심] 크롤러를 자동으로 실행할 시간을 '정시' 기준으로 설정합니다.
-    # UTC 표준시를 사용하므로, 한국 시간(KST)에서 9시간을 빼서 계산해야 합니다.
-    # 예: 매일 새벽 3시 실행 원함 -> 3시 - 9시간 = 전날 18시 -> '0 18 * * *'
-    # 예: 6시간마다 실행 원함 -> '0 */6 * * *'
-    # -------------------------------------------------------------------------
+    # 매일 한국 시간 새벽 3시 (UTC 18시) 자동 실행
     - cron: '0 18 * * *' 
-  workflow_dispatch: # 이 한 줄이 있으면 깃허브 웹사이트에서 내가 원할 때 수동으로 바로 실행할 수도 있습니다.
+  workflow_dispatch: # 수동 실행 버튼 활성화
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   crawl:
-    runs-on: ubuntu-latest # 가상의 리눅스 컴퓨터를 대여합니다.
+    runs-on: ubuntu-latest
 
     steps:
     - name: 1. 저장소의 코드 체크아웃
@@ -22,18 +20,19 @@ jobs:
     - name: 2. 가상 컴퓨터에 파이썬 설치
       uses: actions/setup-python@v5
       with:
-        python-python: '3.10'
+        python-version: '3.10'
 
-    - name: 3. 크롬 브라우저 설정 (Selenium 구동용)
-      # 깃허브 Actions의 기본 우분투 환경에는 크롬과 크롬드라이버가 이미 설치되어 있어, 
-      # 별도의 다운로드 없이 headless 옵션만 주면 바로 작동합니다.
+    - name: 3. 시스템 크롬 브라우저 다운로드 및 설치
       run: |
         sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
+        sudo apt-get install -y wget curl unzip
+        # 최신 안정판 구글 크롬 설치
+        wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
 
-    - name: 4. 필요한 라이브러리 설치 (requirements.txt)
+    - name: 4. 필요한 라이브러리 설치 (오타 수정 완료)
       run: |
-        python -m pip upgrade pip
+        python -m pip install --upgrade pip
         pip install -r requirements.txt
 
     - name: 5. 파이썬 스크립트 실행
