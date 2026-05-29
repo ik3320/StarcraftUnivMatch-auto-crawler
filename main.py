@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 # --- 설정 정보 ---
-GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwPZEoijPlaRLQijwvTU9RW50N6Nn0GTuuA5pFjBzY3vHBeLc7UxOtWDnGFvd16cpcCbQ/exec"  # 본인의 구글 웹앱 URL 주소를 넣으세요.
+GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwdyiEHZLJVQyFhpKnEeQGpjjZGpdU0FnzBxj_bb2tSl1pdlyp6-cgINTt_HDBS47NAMQ/exec"  # 본인의 구글 웹앱 URL 주소를 넣으세요.
 
 def get_target_list():
     """GAS로부터 아이디, 주소, 현재 소속 대학명을 받아옵니다."""
@@ -72,7 +72,7 @@ def crawl_univ_match(url, current_company):
             # --- [수정] 제외할 단어 목록을 여기에 다 적으세요 (띄어쓰기 주의) ---
             exclude_keywords = [
                 "CK", "ck", "평가전", " PL", "이벤트전", "친선전", 
-                "연습전", "테스트", "내전", "스크림", "멸망전", "위너스리그","티어 대전"
+                "연습전", "테스트", "내전", "스크림", "멸망전", "위너스리그","티어 대전","프로리그","중간고사","vs 오똔대","vs FA","현 JSA vs 전 JSA","모의고사"
             ]
             
             # 대소문자 무관하게 검사하기 위해 매치명을 대문자로 변환
