@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 # --- 설정 정보 ---
-GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycby-iFZnoHJ9qMLTSEXBJlmonGKW5smxGa197xA6MwHAMB8bL4JKaat51iiToCexbAIx5A/exec"  # 본인의 구글 웹앱 URL 주소를 넣으세요.
+GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxnAA2SC2POVhZ494D57bXgg_ivin7K-IwGydXk_e8hyLRR6_5gnh9A1ULym8w1dspMag/exec"  # 본인의 구글 웹앱 URL 주소를 넣으세요.
 
 def get_target_list():
     """GAS로부터 아이디, 주소, 현재 소속 대학명을 받아옵니다."""
