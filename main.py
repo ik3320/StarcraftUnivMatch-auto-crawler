@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # --- 설정 정보 ---
-GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwm6k5GOONXnDsf9GnHBzB-Jf4ut_fpozA4tP1MqZmvsYFq0isiXjpUJWGyqWlf9J_q0g/exec"  # 본인의 구글 웹앱 URL 주소를 넣으세요.
+GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxE2AsR5cigM-Ua_YzITB32nwQj6Fg1RyEROe_oc-v_gyJ9f4aMZR2qF9jACpNM_jMc0A/exec"  # 본인의 구글 웹앱 URL 주소를 넣으세요.
 
 def get_target_list():
     """GAS로부터 아이디, 주소, 현재 소속 대학명을 받아옵니다."""
