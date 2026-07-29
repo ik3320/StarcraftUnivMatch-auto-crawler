@@ -9,8 +9,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-# --- 설정 정보 ---
-GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzpXPZclpIAytrJqZ2-4xxVbUxYuByHLQR8wN24g_pz6pXvqzS4gXvVSVtgrf8GVRhY2A/exec"  # 본인의 구글 웹앱 URL 주소를 넣으세요.
+# 환경변수 'GAS_URL'에서 값을 읽어옵니다.
+GAS_WEBAPP_URL = os.environ.get("GAS_URL")
+
+# 만약 환경변수가 세팅되어 있지 않다면 에러 처리
+if not GAS_WEBAPP_URL:
+    print("오류: 구글 웹 앱 URL(GAS_URL) 환경변수가 세팅되지 않았습니다.")
+    sys.exit(1)
 
 def get_target_list():
     """GAS로부터 아이디, 주소, 현재 소속 대학명을 받아옵니다."""
