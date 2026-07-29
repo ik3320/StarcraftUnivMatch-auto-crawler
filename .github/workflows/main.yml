@@ -38,3 +38,5 @@ jobs:
     - name: 5. 파이썬 스크립트 실행
       run: |
         python main.py
+env:
+  GAS_URL: ${{ secrets.GAS_WEB_APP_URL }}
