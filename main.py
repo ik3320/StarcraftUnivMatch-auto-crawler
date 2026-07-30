@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # 환경변수 'GAS_URL'에서 값을 읽어옵니다.
-GAS_WEBAPP_URL = os.environ.get("GAS_URL")
+GAS_WEBAPP_URL = os.environ.get("GAS_WEB_APP_URL")
 
 # 만약 환경변수가 세팅되어 있지 않다면 에러 처리
 if not GAS_WEBAPP_URL:
